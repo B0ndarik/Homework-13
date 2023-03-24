@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task_5</title>
+  </head>
+  <body>
+    <a href="index.html">Main page</a>
+    <script>
+      //Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+
+      function getArithmetic(min, max) {
+        let a = min + Math.floor(Math.random() * (max - min + 1));
+        let b = min + Math.floor(Math.random() * (max - min + 1));
+        let plus = parseInt(prompt(`${a} + ${b}`));
+        if (a + b === plus) alert("Right");
+        else alert("wrong");
+      }
+
+      let mathExercise = setInterval(getArithmetic, 10000, 10, 99);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework#13</title>
+  </head>
+  <body>
+    <a style="display: block" href="task_4.html">Translate game</a>
+    <a style="display: block" href="task_5.html">Math Exercise</a>
+    <a style="display: block" href="task_6.html">Go to site</a>
+    <script>
+      //Задача 1. Нехай   X0 = 1, Xi = Xi - 1 + 2i, де i = 1,2,3.... Визначити X10 . Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+
+      function getSequenceRecursion_1(i) {
+        if (i === 0) return 1;
+        else {
+          return getSequenceRecursion_1(i - 1) + 2 * i;
+        }
+      }
+
+      let sequenceRecursion_1 = getSequenceRecursion_1(10);
+      document.write(`Recursion result - ${sequenceRecursion_1}<br>`);
+
+      function getSequenceNonRecursion_1(x) {
+        let result = 1;
+        for (let i = 1; i <= x; i++) {
+          result += 2 * i;
+        }
+        return result;
+      }
+      let sequenceNonRecursion_1 = getSequenceNonRecursion_1(10);
+
+      document.write(`Nonrecursion result - ${sequenceNonRecursion_1}<br>`);
+
+      //Задача 2.  Нехай X0 = X1 = 1, Xi = Xi-1 + 2Xi-2, де i = 1,2,3... Визначити Xn. Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+
+      function getSequenceRecursion_2(i) {
+        if (i === 0 || i === 1) return 1;
+        else {
+          return (
+            getSequenceRecursion_2(i - 1) + 2 * getSequenceRecursion_2(i - 2)
+          );
+        }
+      }
+
+      let sequenceRecursion_2 = getSequenceRecursion_2(10);
+      document.write(`Recursion result 2 - ${sequenceRecursion_2}<br>`);
+
+      function getSequenceNonRecursion_2(x) {
+        let result;
+        let result_1 = (result_2 = 1);
+        for (let i = 2; i <= x; i++) {
+          result = result_1 + 2 * result_2;
+          result_2 = result_1;
+          result_1 = result;
+        }
+        return result;
+      }
+      let sequenceNonRecursion_2 = getSequenceNonRecursion_2(10);
+
+      document.write(`Nonrecursion result 2- ${sequenceNonRecursion_2}<br>`);
+
+      //Задача 3.  З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати по одне значення від заданого мінімального до заданого максимального. Якщо значення досягне максимального, то наступним буде мінімальне значення. З використанням цієї функції реалізувати перебір номерів місяців.
+
+      function fullYear(minMonth, maxMonth) {
+        let month = minMonth;
+        function countMonths() {
+          if (month > maxMonth) month = minMonth;
+          return month++;
+        }
+        return countMonths;
+      }
+
+      let countMonths = fullYear(1, 12);
+
+      for (let i = 0; i < 13; i++) {
+        document.write(`${countMonths()}<br>`);
+      }
+
+      
+    </script>
+  </body>
+</html>
